@@ -9,17 +9,22 @@ Dark green: #28b485
 
 /*Universal Selector
 Section used to clear all padding and margin that we do not want*/
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   /*border-box makes it so that the border and padding are not added to the total width/height of the box
   eg: if padding is 2px and we set width to 4px, the actual width will be 2px without border-box*/
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 html {
-  /*set the root font-size so that rem refers to this*/
-  font-size: 10px;
+  /*
+  set the root font-size so that rem refers to this
+  default font-size is 16, since we want 10px, we do 62.5% of 16px
+  */
+  font-size: 62.5%;
 }
 
 body {
@@ -29,6 +34,7 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
+  box-sizing: border-box;
 }
 
 /*header is the class that contains everything in header*/
@@ -52,7 +58,7 @@ body {
 }
 
 /*logo box contains the logo picture*/
-.logo-box {
+.header__logo-box {
   /*positon is absolute with respect to the parent box that must be set to relative*/
   position: absolute;
   top: 4rem;
@@ -60,11 +66,11 @@ body {
 }
 
 /*the actual logo*/
-.logo {
+.header__logo {
   height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   /*with respect to the header element*/
   top: 40%;
@@ -84,7 +90,7 @@ body {
 }
 
 /*A span element is by default an inline element*/
-.heading-primary-main {
+.heading-primary--main {
   /*We want this to be a block element because block elements occupy its entire dimensions given and it has line breaks before and after them*/
   display: block;
   font-size: 6rem;
@@ -99,7 +105,7 @@ body {
   /* animation-delay: 3s;*/
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -176,7 +182,7 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
   background-color: #ffffff;
   color: #777;
 }
@@ -195,7 +201,7 @@ body {
   z-index: -1;
   transition: all 0.4s;
 }
-.btn-white::after {
+.btn--white::after {
   background-color: white;
 }
 
@@ -204,7 +210,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom 1s ease-out 2s;
   /*applieds 0% animation before animation starts*/
   animation-fill-mode: backwards;
