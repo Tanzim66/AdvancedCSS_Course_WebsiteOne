@@ -7,11 +7,13 @@ Dark green: #28b485
 
 */
 
-/*Universal Selector*/
+/*Universal Selector
+Section used to clear all padding and margin that we do not want*/
 * {
   margin: 0;
   padding: 0;
-  /*border-box makes it so that the border and padding are not added to the total width/height of the box*/
+  /*border-box makes it so that the border and padding are not added to the total width/height of the box
+  eg: if padding is 2px and we set width to 4px, the actual width will be 2px without border-box*/
   box-sizing: border-box;
 }
 
@@ -24,25 +26,112 @@ body {
   padding: 30px;
 }
 
+/*header is the class that contains everything in header*/
 .header {
+  /*vh means view point, the size of the element changes with respect to the viewpoint of the user*/
   height: 95vh;
+  /*background images are ordered left to right separated by a comma, left being desplayed on top of the images on the right*/
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 214, 113, 0.8),
       #28b485
     ),
     url(../img/hero.jpg);
+  /*covers the entire element/class */
   background-size: cover;
   background-position: top;
+  /*must be set to relative for other elements inside it to have position with respect to it*/
+  position: relative;
+  /*makes a polygon, coordinates start from the top left clockwise*/
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
+/*logo box contains the logo picture*/
 .logo-box {
+  /*positon is absolute with respect to the parent box that must be set to relative*/
   position: absolute;
   top: 40px;
   left: 40px;
 }
 
+/*the actual logo*/
 .logo {
   height: 35px;
+}
+
+.text-box {
+  position: absolute;
+  /*with respect to the header element*/
+  top: 40%;
+  left: 50%;
+  /*with respect to the logo-box (own element)*/
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+
+  /*fixes shaky animation of the header test*/
+  backface-visibility: hidden;
+}
+
+/*A span element is by default an inline element*/
+.heading-primary-main {
+  /*We want this to be a block element because block elements occupy its entire dimensions given and it has line breaks before and after them*/
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+
+  /*animation-iteration-count: 3;*/
+  /* animation-delay: 3s;*/
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation: moveInRight 2s ease-out;
+}
+
+/*animations*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+/*:link is a psudo class, this is a state of the button class. Used to style classes unders special conditions*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
 }
