@@ -1,0 +1,23 @@
+/*Universal Selector
+Section used to clear all padding and margin that we do not want*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /*border-box makes it so that the border and padding are not added to the total width/height of the box
+  eg: if padding is 2px and we set width to 4px, the actual width will be 2px without border-box*/
+  box-sizing: inherit;
+}
+
+html {
+  /*
+  set the root font-size so that rem refers to this
+  default font-size is 16, since we want 10px, we do 62.5% of 16px
+  */
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

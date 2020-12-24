@@ -1,0 +1,63 @@
+.btn {
+  /*:link is a psudo class, this is a state of the button class. Used to style classes unders special conditions*/
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /*Inline blocks are block elements but do not create a new line before and after the elements
+    Inline block elements are treated as if they are text, so if we want to center the element we can just center the text*/
+    display: inline-block;
+    border-radius: 10rem;
+    /*to animate all transitions*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /*x y blur colour*/
+    box-shadow: 0 1rem 2rem rgba($colour-black, 0.2);
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  /*on click*/
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($colour-black, 0.2);
+  }
+
+  /*psudoelements, this after element creates a new element after the first element*/
+  &::after {
+    content: "";
+    display: inline-block;
+    /*with respect to the btn class*/
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--white {
+    background-color: $colour-white;
+    color: $colour-grey-dark;
+
+    &::after {
+      background-color: $colour-white;
+    }
+  }
+
+  &--animated {
+    animation: moveInBottom 1s ease-out 2s;
+    /*applieds 0% animation before animation starts*/
+    animation-fill-mode: backwards;
+  }
+}

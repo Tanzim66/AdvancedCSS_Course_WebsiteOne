@@ -1,0 +1,42 @@
+/*header is the class that contains everything in header*/
+.header {
+  /*vh means view point, the size of the element changes with respect to the viewpoint of the user*/
+  height: 95vh;
+  /*background images are ordered left to right separated by a comma, left being desplayed on top of the images on the right*/
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($colour-primary-light, 0.8),
+      rgba($colour-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  /*covers the entire element/class */
+  background-size: cover;
+  background-position: top;
+  /*must be set to relative for other elements inside it to have position with respect to it*/
+  position: relative;
+  /*makes a polygon, coordinates start from the top left clockwise*/
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+  /*logo box contains the logo picture*/
+  &__logo-box {
+    /*positon is absolute with respect to the parent box that must be set to relative*/
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  /*the actual logo*/
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    /*with respect to the header element*/
+    top: 40%;
+    left: 50%;
+    /*with respect to the logo-box (own element)*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
