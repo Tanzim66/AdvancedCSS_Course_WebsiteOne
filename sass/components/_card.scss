@@ -1,0 +1,72 @@
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem;
+
+  &__side {
+    background-color: orange;
+    color: $colour-white;
+    font-size: 2rem;
+
+    height: 50rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($colour-black, 0.15);
+    border-radius: 0.3rem;
+    overflow: hidden;
+
+    &--front {
+      &-1 {
+        background-color: $colour-white;
+      }
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      &-2 {
+        background-image: linear-gradient(
+          to bottom right,
+          $colour-secondary-light,
+          $colour-secondary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side {
+    &--front {
+      transform: rotateY(-180deg);
+    }
+    &--back {
+      transform: rotateY(0);
+    }
+  }
+
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: linear-gradient(
+          to bottom right,
+          $colour-secondary-light,
+          $colour-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: url(../img/nat-5.jpg);
+    }
+    &--3 {
+      background-image: url(../img/nat-5.jpg);
+    }
+  }
+}

@@ -15,6 +15,7 @@
   /*must be set to relative for other elements inside it to have position with respect to it*/
   position: relative;
   /*makes a polygon, coordinates start from the top left clockwise*/
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 
   /*logo box contains the logo picture*/
