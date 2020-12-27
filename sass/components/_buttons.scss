@@ -55,6 +55,11 @@
     }
   }
 
+  &--green {
+    background-color: $colour-primary;
+    color: $colour-white;
+  }
+
   &--animated {
     animation: moveInBottom 1s ease-out 2s;
     /*applieds 0% animation before animation starts*/
