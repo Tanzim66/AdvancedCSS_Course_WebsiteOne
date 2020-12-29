@@ -1,5 +1,6 @@
 .btn {
   /*:link is a psudo class, this is a state of the button class. Used to style classes unders special conditions*/
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -13,6 +14,10 @@
     transition: all 0.2s;
     position: relative;
     font-size: $default-font-size;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -26,7 +31,9 @@
   }
 
   /*on click*/
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba($colour-black, 0.2);
   }
